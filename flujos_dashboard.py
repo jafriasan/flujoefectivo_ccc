@@ -22,7 +22,7 @@ def dashboard_series_flujo():
     # CARGA DE DATOS
     # =====================================================
 
-    archivo = "/Users/judith_frias/Flujo_pto_data/flujos_cubo.xlsx"
+    archivo = "flujos_cubo.xlsx"
 
     @st.cache_data
     def load_data():
