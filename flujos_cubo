@@ -1,0 +1,44 @@
+# Parte de la base de datos original con el presupuesto ya separado en semanas
+
+import pandas as pd
+
+archivo = "flujos_database.xlsx"
+archivo_exportar = "flujos_cubo.xlsx"
+
+df = pd.read_excel(archivo)
+
+
+df["detalle"] = df["subaccount"].astype(str).str[:6]
+df["detalle_des"] = df["subaccount_des_limpia"]
+
+# Reemplazar strings vacíos por "NA"
+#df["circuito_desc"] = df["circuito_desc"].replace("", "NA")
+#df["region"] = df["region"].replace("", "NA")
+#df["estado"] = df["estado"].replace("", "NA")
+#df["area"] = df["area"].replace("", "NA")
+
+tabla = (
+    df
+    .groupby(["date_sem", "date_fec", "tp_costo",
+              "tp_costo_des", "cuenta", "cuenta_des", "account",
+              "account_des", "detalle", "detalle_des", "etapa"], as_index=False)
+    .agg({
+        "subtot_per": "sum",
+        "fr_per": "sum",
+        "costo_fr_per": "sum",
+        #"ing_estrenos_year": "sum", #acumulado en el año
+        #"adm_estrenos_year": "sum", #acumulado en el año
+        #ing_est_mex_year": "sum", #acumulado en el año
+        #"adm_est_mex_year": "sum" #acumulado en el año
+    })
+)   
+
+# VALIDACIÓN
+total_df = df["costo_fr_per"].sum()
+total_tabla = tabla["costo_fr_per"].sum()
+
+print(f"Total original: {total_df:,.2f}")
+print(f"Total cubo:     {total_tabla:,.2f}")
+print(f"Diferencia:     {total_df - total_tabla:,.2f}")
+
+tabla.to_excel(archivo_exportar, index=False)
