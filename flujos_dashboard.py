@@ -22,6 +22,7 @@ def dashboard_series_flujo():
     # CARGA DE DATOS
     # =====================================================
 
+
     archivo = "flujos_cubo_insumo.xlsx"
 
     @st.cache_data
