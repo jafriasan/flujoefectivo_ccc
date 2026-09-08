@@ -149,7 +149,7 @@ def dashboard_series_flujo():
     # =====================================================
 
     opciones_cuenta_1 = sorted(
-        df_filtro_tp["cuenta_des"]
+        df_filtro_tp["cuenta_no_des"]
         .dropna()
         .unique()
     )
@@ -169,7 +169,7 @@ def dashboard_series_flujo():
     if f_cuenta_1:
 
         df_filtro_cuenta_1 = df_filtro_cuenta_1[
-            df_filtro_cuenta_1["cuenta_des"].isin(f_cuenta_1)
+            df_filtro_cuenta_1["cuenta_no_des"].isin(f_cuenta_1)
         ]
 
     # =====================================================
@@ -177,7 +177,7 @@ def dashboard_series_flujo():
     # =====================================================
 
     opciones_cuenta_2 = sorted(
-        df_filtro_cuenta_1["account_des"]
+        df_filtro_cuenta_1["account_no_des"]
         .dropna()
         .unique()
     )
@@ -197,7 +197,7 @@ def dashboard_series_flujo():
     if f_cuenta_2:
 
         df_filtro_cuenta_2 = df_filtro_cuenta_2[
-            df_filtro_cuenta_2["account_des"].isin(f_cuenta_2)
+            df_filtro_cuenta_2["account_no_des"].isin(f_cuenta_2)
         ]
 
     # =====================================================
@@ -205,7 +205,7 @@ def dashboard_series_flujo():
     # =====================================================
 
     opciones_cuenta_3 = sorted(
-        df_filtro_cuenta_2["detalle_des"]
+        df_filtro_cuenta_2["detalle_no_des"]
         .dropna()
         .unique()
     )
