@@ -25,23 +25,38 @@ def dashboard_series_flujo():
 
     archivo = "flujos_cubo_insumo.xlsx"
 
-    @st.cache_data
     def load_data():
-
         return pd.read_excel(
             archivo,
             keep_default_na=False
         )
 
     df = load_data()
-   
+
     df.columns = (
         df.columns
         .astype(str)
         .str.strip()
     )
 
-    st.write(df.columns.tolist())
+    st.write("ARCHIVO:", archivo)
+    st.write("NÚMERO DE FILAS:", len(df))
+    st.write("COLUMNAS:", df.columns.tolist())
+
+    st.write(
+        "CUENTA_NO_DES:",
+        "cuenta_no_des" in df.columns
+    )
+
+     st.write(
+        "ACCOUNT_NO_DES:",
+        "account_no_des" in df.columns
+    )
+
+    st.write(
+        "DETALLE_NO_DES:",
+        "detalle_no_des" in df.columns
+    )
 
     # =====================================================
     # MÉTRICA
