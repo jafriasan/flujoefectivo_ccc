@@ -264,19 +264,19 @@ def dashboard_series_flujo():
     if f_cuenta_1:
 
         df_filtered = df_filtered[
-            df_filtered["cuenta_des"].isin(f_cuenta_1)
+            df_filtered["cuenta_no_des"].isin(f_cuenta_1)
         ]
 
     if f_cuenta_2:
 
         df_filtered = df_filtered[
-            df_filtered["account_des"].isin(f_cuenta_2)
+            df_filtered["account_no_des"].isin(f_cuenta_2)
         ]
 
     if f_cuenta_3:
 
         df_filtered = df_filtered[
-            df_filtered["detalle_des"].isin(f_cuenta_3)
+            df_filtered["detalle_no_des"].isin(f_cuenta_3)
         ]
 
     # =====================================================
