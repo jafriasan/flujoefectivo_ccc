@@ -33,9 +33,14 @@ def dashboard_series_flujo():
         )
 
     df = load_data()
-    st.write("¿Existe cuenta_no_des?", "cuenta_no_des" in df.columns)
-    st.write("¿Existe account_no_des?", "account_no_des" in df.columns)
-    st.write("¿Existe detalle_no_des?", "detalle_no_des" in df.columns)
+   
+    df.columns = (
+        df.columns
+        .astype(str)
+        .str.strip()
+    )
+
+    st.write(df.columns.tolist())
 
     # =====================================================
     # MÉTRICA
