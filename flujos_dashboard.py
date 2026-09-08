@@ -620,5 +620,4 @@ def dashboard_series_flujo():
 
 dashboard_series_flujo()
 
-
 #streamlit run /Users/judith_frias/Flujo_pto_data/flujos_dashboard.py
